@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.p3p3p3.ConsumerController" style="-fx-padding: 10;">
+    <!-- Top Pane: Configuration inputs -->
+    <top>
+        <GridPane hgap="10" vgap="10">
+            <TextField fx:id="threadField" promptText="Consumer Thread Count" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="queueField" promptText="Queue Size" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Button text="Start Consumer" onAction="#handleStartConsumer" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        </GridPane>
+    </top>
 
-</AnchorPane>
+    <!-- Center Pane: Logs and Video Thumbnails -->
+    <center>
+        <VBox spacing="10">
+            <TextArea fx:id="logArea" prefHeight="150" editable="false"/>
+            <ListView fx:id="videoList" prefHeight="100"/>
+            <FlowPane fx:id="videoThumbnailContainer" hgap="10" vgap="10">
+                <!-- Thumbnails will be added dynamically here -->
+            </FlowPane>
+        </VBox>
+    </center>
+</BorderPane>
